@@ -7,7 +7,7 @@ jobs:
   build:
     name: Start Building...
     runs-on: windows-latest
-    timeout-minutes: 999999999
+    timeout-minutes: 9999
     
     steps:
       - name: Downloading & Installing Essentials
@@ -21,23 +21,9 @@ jobs:
       - name: Time Counter
         run: python time.py
 
-      - name: Upload show.bat
-        if: always()
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: show-bat
-          path: show.bat
-
-      - name: Upload Downloads.bat
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: downloads-bat
-          path: Downloads.bat
-
-      - name: Upload time.py
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: time-py
-          path: time.py
+          name: my-artifacts
+          path: |
+            **/*
