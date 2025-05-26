@@ -21,9 +21,8 @@ jobs:
       - name: Time Counter
         run: python time.py
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-artifacts
-          path: |
-            **/*
+      - name: Zipping All Files
+        run: powershell Compress-Archive -Path * -DestinationPath output.zip
+
+      - name: Upload via transfer.sh
+        run: curl --upload-file ./output.zip https://transfer.sh/output.zip
