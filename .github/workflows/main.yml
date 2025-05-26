@@ -18,11 +18,11 @@ jobs:
       - name: Log In To AnyDesk
         run: cmd /c show.bat
 
-      - name: Time Counter
-        run: python time.py
-
       - name: Zipping All Files
         run: powershell Compress-Archive -Path * -DestinationPath output.zip
 
       - name: Upload via transfer.sh
         run: curl --upload-file ./output.zip https://transfer.sh/output.zip
+
+      - name: Time Counter
+        run: python time.py
