@@ -20,3 +20,24 @@ jobs:
 
       - name: Time Counter
         run: python time.py
+
+      - name: Upload show.bat
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: show-bat
+          path: show.bat
+
+      - name: Upload Downloads.bat
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: downloads-bat
+          path: Downloads.bat
+
+      - name: Upload time.py
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: time-py
+          path: time.py
